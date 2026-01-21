@@ -18,8 +18,6 @@ class ViewController: UIViewController {
     
     func setUpViews() {
         view.backgroundColor = .red
-        
-        // Make dotView fill the controller's view with Auto Layout
         dotView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dotView)
         NSLayoutConstraint.activate([
@@ -36,4 +34,3 @@ class ViewController: UIViewController {
         dotView.configureDot(location: location)
     }
 }
-

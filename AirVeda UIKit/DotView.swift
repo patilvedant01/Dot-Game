@@ -31,7 +31,6 @@ class DotView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        // If you want the view to always fill its superview when added without constraints:
         if frame == .zero, let superview = superview {
             frame = superview.bounds
         }
@@ -47,7 +46,6 @@ class DotView: UIView {
             return
         }
         
-        // Optional: if you want to prevent new lines when tapping the exact same point
         if set.contains(location) {
             cannotFormNewLine = true
         }
@@ -58,7 +56,6 @@ class DotView: UIView {
         dotDict[count] = CGPoint(x: x, y: y)
         set.insert(CGPoint(x: x, y: y))
         
-        // Draw a small dot as a filled circle layer
         let radius: CGFloat = 4.0
         let dotRect = CGRect(x: x - radius, y: y - radius, width: radius * 2, height: radius * 2)
         let dotPath = UIBezierPath(ovalIn: dotRect)
@@ -68,7 +65,6 @@ class DotView: UIView {
         dotLayer.fillColor = UIColor.blue.cgColor
         layer.addSublayer(dotLayer)
         
-        // If there is a previous point, draw a line segment layer from last to current
         if count > 0, let lastPoint = dotDict[count - 1] {
             let linePath = UIBezierPath()
             linePath.move(to: lastPoint)
